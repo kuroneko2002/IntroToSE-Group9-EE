@@ -15,12 +15,19 @@ class App():
             # Connected by (address)
             while True:
                 try:
-                    message = connection.recv(1024).decode(FORMAT)
+                    # message structure: 
+                    # group: "Login", "Query", "Archive" or "Exit"
+                    # type: 1 of 13 functions
+                    # data
+                    msg = json.loads(connection.recv(1024).decode(FORMAT))
+                    # data_send = json.dumps(data)
                     # connection.sendall(data_send.encode(FORMAT))
-                    if message == "Exit":
+                    #if message == "":
+
+                    if msg == "Exit":
                         connection.close()
                         break
-                    elif message=='': raise Exception
+                    elif msg=='': raise Exception
 
                 except:
                     # Client might be forcibly disconnected!
