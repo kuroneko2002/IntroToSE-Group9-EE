@@ -22,7 +22,7 @@ class App():
                     msg = json.loads(connection.recv(1024).decode(FORMAT))
                     # data_send = json.dumps(data)
                     # connection.sendall(data_send.encode(FORMAT))
-                    #if message == "":
+                    # if message == "":
 
                     if msg == "Exit":
                         connection.close()
