@@ -1,4 +1,3 @@
-import os 
 import pymongo
 
 password='group9'
@@ -17,10 +16,11 @@ def getAll(db_name, col_name):
 
         #get data
         data=account_coll.find()
-        
-        return data
+        if(data):
+            return data
+        return None
     except:
-        return 'Error!'
+        return 'Error'
 
 def get(db_name, col_name, key, key_value):
     try:
@@ -38,7 +38,7 @@ def get(db_name, col_name, key, key_value):
         return data
 
     except:
-        return 'Error!'
+        return 'Error'
 
 def insert_db(db_name, col_name, data):
     try:
@@ -55,7 +55,7 @@ def insert_db(db_name, col_name, data):
         return x.insert_id
 
     except:
-        return 'Error!'
+        return 'Error'
 
 def update_db(db_name, col_name, key, key_value, update_key, update_value):
     try:
@@ -71,10 +71,10 @@ def update_db(db_name, col_name, key, key_value, update_key, update_value):
         query = {key: key_value}
         newvalues = {"$set": {update_key: update_value}}
         account_coll.update_one(query, newvalues)
-        return 'Succeed!'
+        return 'Succeed'
 
     except:
-        return 'Error!'
+        return 'Error'
 
 def delete(db_name, col_name, key, value):
     try:
@@ -89,10 +89,10 @@ def delete(db_name, col_name, key, value):
         #delete data
         query = {key: value}
         account_coll.delete_one(query)
-        return 'Succeed!'
+        return 'Succeed'
 
     except:
-        return 'Error!'
+        return 'Error'
 
 def deleteAll(db_name, col_name):
     try:
@@ -108,7 +108,7 @@ def deleteAll(db_name, col_name):
         x=account_coll.delete_many({})
         return x.deleted_count
     except:
-        return 'Error!'
+        return 'Error'
 
 def getSize(db_name, col_name):
     try:
@@ -123,4 +123,4 @@ def getSize(db_name, col_name):
         return len(account_coll)
         
     except:
-        return 'Error!'
+        return 'Error'
