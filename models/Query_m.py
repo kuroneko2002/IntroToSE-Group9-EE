@@ -1,25 +1,21 @@
 import CRUD_db
+import json
 
-def listeningTest(id):
-    try:
-        return 'Succeed!'
-    except:
-        return 'Error!'
+def queryFormat(db_name, collection, index = 0):
+    data = CRUD_db.getAll(db_name, collection)
+    if (data == 'Error'):
+        return data
 
-def readingTest(id):
-    try:
-        return 'Succeed!'
-    except:
-        return 'Error!'
+    return json.loads(data[index])
 
-def shortStory(id):
-    try:
-        return 'Succeed!'
-    except:
-        return 'Error!'
+def listeningTest(part = "Part I", index = 0):
+    return queryFormat("ListeningTest", part, index)
 
-def shortStory(id):
-    try:
-        return 'Succeed!'
-    except:
-        return 'Error!'
+def readingTest(part = "Part V", index = 0):
+    return queryFormat("ReadingTest", part, index)
+
+def shortStory(index = 0):
+    return queryFormat("ShortStories", "Short Stories", index)
+
+def TopicVocab(topic, index = 0):
+    return queryFormat("TopicVocab", topic, index)
