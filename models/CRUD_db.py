@@ -18,7 +18,7 @@ def getAll(db_name, col_name):
         data=account_coll.find()
         if(data):
             return data
-        return None
+        return "None"
     except:
         return 'Error'
 
