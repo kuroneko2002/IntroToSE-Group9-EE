@@ -3,7 +3,7 @@ import json
 
 def login(user):
     try:
-        data = CRUD_db.get("Account", "Account", "name", user.username)
+        data = CRUD_db.get("Account", "Account", "name", user.user)
         if (data == "None"):
             return 'Invalid username'
 
@@ -12,26 +12,26 @@ def login(user):
             return "Invalid password"
 
         # Login confirmed
-        data = CRUD_db.update_db("Account", "Account", "name", user.username, "status", 'Online')
-        return 'Valid'
+        data = CRUD_db.update_db("Account", "Account", "name", user.user, "status", 'Online')
+        return 'Succeed'
     except:
         return 'Error'
 
-def signIn(user):
+def signUp(user):
     try:
-        data = CRUD_db.get("Account", "Account", "name", user.username)
+        data = CRUD_db.get("Account", "Account", "name", user.user)
         if (data == None):
             CRUD_db.insert_db("Account", "Account",user)
             return 'Succeed'
 
-        return 'Invalid'
+        return 'Invalid user'
     except:
         return 'Error'
 
 def logout(user):
     try:
         # Logout confirmed
-        data = CRUD_db.update_db("Account", "Account", "name", user.username, "status", 'Offline')
+        data = CRUD_db.update_db("Account", "Account", "name", user.user, "status", 'Offline')
         if (data == "Succeed"):
             return data
 
