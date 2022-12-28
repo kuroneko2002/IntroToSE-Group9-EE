@@ -1,23 +1,71 @@
-def listeningTest(data, err_mes):
-    try:
-        return 'Succeed!'
-    except:
-        return 'Error!'
+def listeningTest(model_res):
+    if (model_res == "None"):
+        return {
+            "err_msg": "No data"
+        }
+    if (model_res == "Error"):
+        return {
+            "err_msg": "Error"
+        }
+    if (model_res == "Invalid part"):
+        return {
+            "err_msg": "Wrong part"
+        }
 
-def readingTest(data, err_mes):
-    try:
-        return 'Succeed!'
-    except:
-        return 'Error!'
+    # have data
+    return {
+        "err_msg": "None",
+        "data": model_res
+    }
 
-def shortStory(data, err_mes):
-    try:
-        return 'Succeed!'
-    except:
-        return 'Error!'
+def readingTest(model_res):
+    if (model_res == "None"):
+        return {
+            "err_msg": "No data"
+        }
+    if (model_res == "Error"):
+        return {
+            "err_msg": "Error"
+        }
+    if (model_res == "Invalid part"):
+        return {
+            "err_msg": "Wrong part"
+        }
+        
+    # have data
+    return {
+        "err_msg": "None",
+        "data": model_res
+    }
 
-def shortStory(data, err_mes):
-    try:
-        return 'Succeed!'
-    except:
-        return 'Error!'
+def shortStory(model_res):
+    if (model_res == "None"):
+        return {
+            "err_msg": "No data"
+        }
+    if (model_res == "Error"):
+        return {
+            "err_msg": "Error"
+        }
+
+    # have data
+    return {
+        "err_msg": "None",
+        "data": model_res
+    }
+
+def topicVocab(model_res):
+    if (model_res == "None"):
+        return {
+            "err_msg": "No data"
+        }
+    if (model_res == "Error"):
+        return {
+            "err_msg": "Error"
+        }
+
+    # have data
+    return {
+        "err_msg": "None",
+        "data": model_res
+    }

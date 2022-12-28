@@ -2,20 +2,44 @@ import Login_v
 import Query_v
 import Archive_v
 
-def loginGroup(type, data, err_mes):
-    try:
-        return 'Succeed!'
-    except:
-        return 'Error!'
+def loginGroup(type, model_res):
+    if (type == 'Login'):
+        return Login_v.login(model_res)
 
-def queryGroup(type, data, err_mes):
-    try:
-        return 'Succeed!'
-    except:
-        return 'Error!'
+    elif (type == 'Signup'):
+        return Login_v.signUp(model_res)
 
-def archiveGroup(type, data, err_mes):
-    try:
-        return 'Succeed!'
-    except:
-        return 'Error!'
+    elif (type == 'Logout'):
+        return Login_v.logout(model_res)
+
+    else:
+        return {'err_msg' : 'Wrong type name'}
+
+def queryGroup(type, model_res):
+    if (type == 'Listening'):
+        return Query_v.listeningTest(model_res)
+
+    elif (type == 'Reading'):
+        return Query_v.readingTest(model_res)
+
+    elif (type == 'Story'):
+        return Query_v.shortStory(model_res)
+
+    elif (type == 'Topic'):
+        return Query_v.topicVocab(model_res)
+
+    else:
+        return {'err_msg' : 'Wrong type name'}
+
+def archiveGroup(type, model_res):
+    if (type == 'Test'):
+        return Archive_v.archiveTest(model_res)
+
+    elif (type == 'Story'):
+        return Archive_v.archiveShortStory(model_res)
+
+    elif (type == 'Topic'):
+        return Archive_v.archiveVocab(model_res)
+
+    else:
+        return {'err_msg' : 'Wrong type name'}
