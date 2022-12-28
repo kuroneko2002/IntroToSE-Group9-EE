@@ -11,6 +11,10 @@ def login(user):
         if (data.password != user.password):
             return "Invalid password"
 
+        # check already login?
+        if (data.status == "Online"):
+            return "Already login"
+
         # Login confirmed
         data = CRUD_db.update_db("Account", "Account", "name", user.user, "status", 'Online')
         return 'Succeed'

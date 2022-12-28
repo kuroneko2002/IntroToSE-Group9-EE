@@ -15,6 +15,10 @@ def login(model_res):
         return {
             "err_msg": "Wrong password! Please re-enter password!"
         }
+    if (model_res == "Already login"):
+        return {
+            "err_msg": "User is already login!"
+        }
 
 def signUp(model_res):
     if (model_res == "Succeed"):
