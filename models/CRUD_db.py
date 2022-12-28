@@ -124,3 +124,19 @@ def getSize(db_name, col_name):
         
     except:
         return 'Error'
+
+def backupData(db_name, col_name, data):
+    try:
+        client= pymongo.MongoClient(connection_string)
+
+        #connect to Account Database
+        db=client[db_name]
+
+        #connect to Account Collection in Account Database
+        account_coll=db[col_name]
+
+        for obj in data:
+            account_coll.insert_one(obj)
+        
+    except:
+        return 'Error'
