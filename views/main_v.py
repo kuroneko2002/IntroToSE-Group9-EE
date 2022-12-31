@@ -1,6 +1,6 @@
-import myModules.Login_v as Login_v
-import myModules.Query_v as Query_v
-import myModules.Archive_v as Archive_v
+import views.myModules.Login_v as Login_v
+import views.myModules.Query_v as Query_v
+import views.myModules.Archive_v as Archive_v
 
 def loginGroup(type, model_res):
     if (type == 'Login'):

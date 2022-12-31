@@ -1,4 +1,4 @@
-import CRUD_db
+import models.myModules.CRUD_db as CRUD_db
 import json
 
 def queryFormat(db_name, collection, index = 0):

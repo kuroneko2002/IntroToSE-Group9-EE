@@ -1,4 +1,4 @@
-import CRUD_db
+import models.myModules.CRUD_db as CRUD_db
 import json
 
 def archiveFormat(db_name, collection, data):

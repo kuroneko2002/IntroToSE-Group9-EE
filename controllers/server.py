@@ -1,5 +1,7 @@
-import models.main_m as main_model
-import views.main_v as main_view
+import sys
+sys.path.append("..")
+from models import main_m as main_model
+from views import main_v as main_view
 import socket
 import threading
 import json
@@ -54,7 +56,7 @@ class App():
                             })
                             # print(user + 'has logout!')
 
-                        # print(address + 'has disconnect!')
+                        print(address + 'has disconnect!')
                         connection.close()
                         break
                     elif msg=='': 
@@ -68,29 +70,30 @@ class App():
                         })
                         # print(user + 'has logout!')
                     
-                    # print(address + 'has disconnect!')
+                    print(address + 'has disconnect!')
                     connection.close()
                     break
 
         def runServer():
             while True:
+                print('in while loop')
                 connection, address = server.accept()
                 # thread handling
                 thread = threading.Thread(target = handleClient, args = (self, connection, address))
                 thread.daemon = True
                 thread.start()
-
-        serverThread = threading.Thread(target = runServer)
-        serverThread.daemon = True
-        serverThread.start()
+        
+        runServer()
         # end init
 
 ################### MAIN ################################
 
-server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server.bind((HOST, PORT))
-server.listen()
-try:
-    app = App()
-except:
-    server.close()
+def main():
+    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server.bind((HOST, PORT))
+    server.listen()
+    try:
+        app = App(server)
+    except:
+        print('server closed in main')
+        server.close()
